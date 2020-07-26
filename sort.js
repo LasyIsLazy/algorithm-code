@@ -33,6 +33,7 @@ function insertionSort(arr = []) {
   for (let i = 1; i < arr.length; i++) {
     const element = arr[i]
     for (let j = 0; j < i; j++) {
+      // 把元素插入到正确的位置
       if (element < arr[j]) {
         arr.splice(j, 0, ...arr.splice(i, 1))
         break
