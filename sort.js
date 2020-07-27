@@ -43,7 +43,21 @@ function insertionSort(arr = []) {
   return arr
 }
 
+/** 快速排序 */
+function quickSort(arr = []) {
+  if (arr.length <= 1) {
+    return arr
+  }
+  const pivot = Math.round(arr.length / 2)
+  return [
+    ...quickSort(arr.slice(0, pivot)),
+    arr[pivot],
+    ...quickSort(arr.slice(pivot + 1)),
+  ]
+}
+
 const arr = [2, 1, -4, 5, 3, 4]
 console.log(bubbleSort(arr))
 console.log(selectionSort(arr))
 console.log(insertionSort(arr))
+console.log(quickSort(arr))
