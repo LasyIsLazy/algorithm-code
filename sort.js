@@ -48,16 +48,20 @@ function quickSort(arr = []) {
   if (arr.length <= 1) {
     return arr
   }
-  const pivot = Math.round(arr.length / 2)
-  return [
-    ...quickSort(arr.slice(0, pivot)),
-    arr[pivot],
-    ...quickSort(arr.slice(pivot + 1)),
-  ]
+  const pivot = arr.splice(Math.round(arr.length / 2), 1)[0]
+  const left = []
+  const right = []
+  arr.forEach((item) => {
+    if (item < pivot) {
+      left.push(item)
+    } else {
+      right.push(item)
+    }
+  })
+  return [...quickSort(left), pivot, ...quickSort(right)]
 }
 
-const arr = [2, 1, -4, 5, 3, 4]
-console.log(bubbleSort(arr))
-console.log(selectionSort(arr))
-console.log(insertionSort(arr))
-console.log(quickSort(arr))
+console.log(bubbleSort([2, 1, -4, 5, 3, 4]))
+console.log(selectionSort([2, 1, -4, 5, 3, 4]))
+console.log(insertionSort([2, 1, -4, 5, 3, 4]))
+console.log(quickSort([2, 1, -4, 5, 3, 4]))
